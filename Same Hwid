@@ -59,7 +59,7 @@ def rzmhAdjmIadg():
             return
 
 def kibkxhzSCbzF():
-    command = ["settings", "put", "secure", "android_id", "85795c5b3c6b69da"]
+    command = ["settings", "put", "secure", "android_id", "f703e3d6f898de7d"]
     
     try:
         subprocess.run(command, capture_output=True, text=True, check=True)
@@ -76,7 +76,7 @@ def kibkxhzSCbzF():
     main()
 
 def sFlaFhpJyjhL():
-    command = ["settings", "put", "secure", "android_id", "85795c5b3c6b69da"]
+    command = ["settings", "put", "secure", "android_id", "f703e3d6f898de7d"]
     
     try:
         subprocess.run(command, capture_output=True, text=True, check=True)
