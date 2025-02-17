@@ -110,11 +110,6 @@ def aQVPYrXMkLJH():
     input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞" + Style.RESET_ALL)
     main()
 
-import os
-import json
-import subprocess
-from colorama import Fore, Style
-
 def JrdurFStegDP():
     command = ["settings", "put", "secure", "android_id", "f703e3d6f898de7d"]
     
