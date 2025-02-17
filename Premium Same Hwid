@@ -1,0 +1,98 @@
+import os
+import subprocess
+import requests
+import time
+from colorama import Fore, Style
+
+API_URL = "https://apisxionax.x10.mx/cOKfPjqAYwQF.php"
+KEY_FILE_PATH = "/data/data/SKey11.txt"
+
+def print_header():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    header = r"""
+  _________      .__                              _________                                     .__  __          
+ /   _____/__  __|__| ____   ____ _____  ___  ___ \_   ___ \  ____   _____   _____  __ __  ____ |__|/  |_ ___.__.
+ \_____  \\  \/  /  |/  _ \ /    \\__  \ \  \/  / /    \  \/ /  _ \ /     \ /     \|  |  \/    \|  \   __<   |  |
+ /        \>    <|  (  <_> )   |  \/ __ \_>    <  \     \___(  <_> )  Y Y  \  Y Y  \  |  /   |  \  ||  |  \___  |
+/_______  /__/\_ \__|\____/|___|  (____  /__/\_ \  \______  /\____/|__|_|  /__|_|  /____/|___|  /__||__|  / ____|
+        \/      \/              \/     \/      \/         \/             \/      \/           \/          \/          
+"""
+    print(Fore.LIGHTCYAN_EX + header + Style.RESET_ALL)
+    print(Fore.LIGHTMAGENTA_EX + "🖥️ Sxionax's Discord Is: https://discord.gg/FcEGmkNDDe 🎮" + Style.RESET_ALL)
+    print(Fore.LIGHTMAGENTA_EX + "🎭 I Love The One With Number 11 In My Class... 💝" + Style.RESET_ALL)
+
+def UIBcJLBJJXkC(user_key):
+    headers = {'Authorization': user_key}
+
+    try:
+        response = requests.get(API_URL, headers=headers)
+        response_data = response.json()
+
+        if response_data.get("success") == "true":  
+            print(Fore.LIGHTGREEN_EX + "💸 Your Key Is Valid And Successfully Verified, You Are Now Free To Use This Tool! 💼" + Style.RESET_ALL)
+            return True
+        else:
+            print(Fore.LIGHTRED_EX + "✨ Invalid Key! 💥" + Style.RESET_ALL)
+            return False
+    except requests.RequestException as e:
+        print(Fore.LIGHTRED_EX + f"🎁 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! 🎖️" + Style.RESET_ALL)
+        return False
+
+def rzmhAdjmIadg():
+    while True:
+        if os.path.exists(KEY_FILE_PATH):
+            with open(KEY_FILE_PATH, "r") as f:
+                stored_key = f.read().strip()
+
+            if UIBcJLBJJXkC(stored_key):
+                print(Fore.LIGHTGREEN_EX + "🌙 Correct Key Found, Tool Running... 💭" + Style.RESET_ALL)
+                return
+            else:
+                print(Fore.LIGHTRED_EX + "📣 Stored Key Is Invalid, Please Enter A Valid Key! 🛸" + Style.RESET_ALL)
+
+        user_key = input(Fore.LIGHTCYAN_EX + "🌍 Please Enter Your Key Here 💡: " + Style.RESET_ALL).strip()
+
+        if UIBcJLBJJXkC(user_key):
+            with open(KEY_FILE_PATH, "w") as f:
+                f.write(user_key)
+            print(Fore.LIGHTGREEN_EX + "🗝️ Key Saved Successfully! 💌" + Style.RESET_ALL)
+            return
+
+def kibkxhzSCbzF():
+    command = ["settings", "put", "secure", "android_id", "80ead582c266adbf"]
+    
+    try:
+        subprocess.run(command, capture_output=True, text=True, check=True)
+        print(Fore.LIGHTGREEN_EX + "🔗 Same Hwid Process For This Device Completed! 🧪" + Style.RESET_ALL)
+
+    except subprocess.CalledProcessError:
+        print(Fore.LIGHTRED_EX + "🚫 An Error Occurred While Proceeding Same Hwid For Device, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
+    except FileNotFoundError:
+        print(Fore.LIGHTRED_EX + "🚫 Cannot Run This Command, This Device Doesn't Support Our Feature! ❗" + Style.RESET_ALL)
+    except Exception as e:
+        print(Fore.LIGHTRED_EX + f"🚫 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
+    
+    input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞")
+    main()
+
+def main():
+    rzmhAdjmIadg()  
+
+    print_header()
+    print(Fore.LIGHTYELLOW_EX + "♻️ 1 - Edit Same Hwid For Executors 💦" + Style.RESET_ALL)
+    print(Fore.LIGHTWHITE_EX + "👋 2 - Exit This Tool 😔" + Style.RESET_ALL)
+
+    choice = input(Fore.LIGHTCYAN_EX + "Please Enter Your Choice(1, 2, 3 Or 4): " + Style.RESET_ALL).strip()
+    
+    if choice == "1":
+        kibkxhzSCbzF()
+    elif choice == "2":
+        print(Fore.LIGHTGREEN_EX + "🛠️ Thank You For Purchasing And Using The Tool Created By Sxionax ❄️" + Style.RESET_ALL)
+        exit()
+    else:
+        print(Fore.LIGHTRED_EX + "📍 Invalid Selection, Please Enter 1 or 2! 💯" + Style.RESET_ALL)
+        input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞")
+        main()
+
+if __name__ == "__main__":
+    main()
