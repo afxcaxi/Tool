@@ -4,7 +4,7 @@ import requests
 import time
 from colorama import Fore, Style
 
-API_URL = "https://websitebancaycanh.id.vn/cOKfPjqAYwQF.php"
+API_URL = "https://apisxionax.x10.mx/cOKfPjqAYwQF.php"
 KEY_FILE_PATH = "/data/data/SKey11.txt"
 
 def print_header():
