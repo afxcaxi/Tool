@@ -28,8 +28,8 @@ def UIBcJLBJJXkC(user_key):
         response = requests.get(API_URL, headers=headers)
         response_data = response.json()
 
-        if response_data.get("success") == "true":  
-            print(Fore.LIGHTGREEN_EX + "💸 Your Key Is Valid And Successfully Verified, You Are Now Free To Use This Tool! 💼" + Style.RESET_ALL)
+        if response_data.get("success") == True:  
+            print(Fore.LIGHTGREEN_EX + "💸 Your Key Is Valid And Successfully Verified, You Are Now Free To Use This Tool! 💼" + Style.RESET_ALL)
             return True
         else:
             print(Fore.LIGHTRED_EX + "✨ Invalid Key! 💥" + Style.RESET_ALL)
@@ -75,124 +75,18 @@ def kibkxhzSCbzF():
     input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞")
     main()
 
-def aQVPYrXMkLJH():
-    command = ["settings", "put", "secure", "android_id", "f703e3d6f898de7d"]
-    
-    try:
-        subprocess.run(command, capture_output=True, text=True, check=True)
-        print(Fore.LIGHTGREEN_EX + "🔗 Same Hwid Process For This Device Completed! 🧪" + Style.RESET_ALL)
-    except subprocess.CalledProcessError:
-        print(Fore.LIGHTRED_EX + "🚫 An Error Occurred While Proceeding Same Hwid For Device, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-    except FileNotFoundError:
-        print(Fore.LIGHTRED_EX + "🚫 Cannot Run This Command, This Device Doesn't Support Our Feature! ❗" + Style.RESET_ALL)
-    except Exception as e:
-        print(Fore.LIGHTRED_EX + f"🚫 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-
-    base_path = "/storage/emulated/0/Cryptic"
-    workspace_path = os.path.join(base_path, "Workspace")
-    file_path = os.path.join(workspace_path, "cryptic_key.DEPOSIBLE")
-    
-    try:
-        os.makedirs(workspace_path, exist_ok=True)
-        
-        if os.path.exists(file_path):
-            os.remove(file_path)
-            pass
-        
-        with open(file_path, "w") as f:
-            f.write("65e429d54041fdc45132d78f38c0f387884dec9e544a29bd04527be2fbc59122")
-        
-        print(Fore.LIGHTGREEN_EX + "⏳ Cryptic Key Is Now Permanent. If An Error Occurs, Choose Feature 1! 🗣️" + Style.RESET_ALL)
-
-    except Exception as e:
-        print(Fore.LIGHTRED_EX + f"🔗 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ✔️ " + Style.RESET_ALL)
-    
-    input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞" + Style.RESET_ALL)
-    main()
-
-def JrdurFStegDP():
-    command = ["settings", "put", "secure", "android_id", "f703e3d6f898de7d"]
-    
-    try:
-        subprocess.run(command, capture_output=True, text=True, check=True)
-        print(Fore.LIGHTGREEN_EX + "🔗 Same Hwid Process For This Device Completed! 🧪" + Style.RESET_ALL)
-    except subprocess.CalledProcessError:
-        print(Fore.LIGHTRED_EX + "🚫 An Error Occurred While Proceeding Same Hwid For Device, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-    except FileNotFoundError:
-        print(Fore.LIGHTRED_EX + "🚫 Cannot Run This Command, This Device Doesn't Support Our Feature! ❗" + Style.RESET_ALL)
-    except Exception as e:
-        print(Fore.LIGHTRED_EX + f"🚫 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-
-    illusion_path = "/storage/emulated/0/Illusion"
-    workspace_path = os.path.join(illusion_path, "Workspace")
-    illusion_folder_path = os.path.join(workspace_path, "Illusion")
-    savefile_path = os.path.join(illusion_folder_path, "savefile.json")
-    
-    try:
-        os.makedirs(illusion_folder_path, exist_ok=True)
-
-        # Kiểm tra nếu file savefile.json đã tồn tại, nếu có thì xóa đi
-        if os.path.exists(savefile_path):
-            os.remove(savefile_path)
-            print(Fore.LIGHTYELLOW_EX + "⚠️ savefile.json đã tồn tại và đã được xóa trước khi tạo lại! ⚡" + Style.RESET_ALL)
-
-        savefile_data = {
-            "LastPage": "Home",
-            "ScriptProvider": "Scriptblox",
-            "SelectedPlan": "Paid",
-            "PlanDuration": 2592000,
-            "FavoriteScripts": [],
-            "TimeLeft": 2592000,
-            "LastSF": "Saved",
-            "SaveMinimized": True,
-            "MinimizedShape": "Rounded",
-            "MinimizedSize": "Normal",
-            "SaveLastPage": True,
-            "KeyInSeconds": True,
-            "set": None,
-            "AnimationSpeed": "Normal",
-            "SaveEditor": True,
-            "HoldForInfo": False,
-            "FirstTime": False,
-            "AutoLogin": True,
-            "SaveLastSF": True,
-            "SavedKey": "KEY_illusion+_{\"$ESZ%RDX1282345",
-            "MinimizedLocation": [0.5, 0, 0, 10],
-            "SavedScripts": [],
-            "AutoExecute": True,
-            "EditorText": "",
-            "DebugMode": True
-        }
-        
-        with open(savefile_path, "w") as f:
-            json.dump(savefile_data, f, indent=4)
-
-        print(Fore.LIGHTGREEN_EX + "⏳ savefile.json đã được tạo và lưu tại thư mục Illusion trong Workspace. 🗂️" + Style.RESET_ALL)
-
-    except Exception as e:
-        print(Fore.LIGHTRED_EX + f"🔗 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ✔️ " + Style.RESET_ALL)
-    
-    input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞" + Style.RESET_ALL)
-    main()
-
 def main():
     rzmhAdjmIadg()  
 
     print_header()
     print(Fore.LIGHTYELLOW_EX + "♻️ 1 - Edit Same Hwid For Executors 💦" + Style.RESET_ALL)
-    print(Fore.LIGHTGREEN_EX + "🥇 2 - Make Cryptic's Key Permanent 🛡️" + Style.RESET_ALL)
-    print(Fore.LIGHTBLUE_EX + "🥇 3 - Make Illusion's Key Permanent 🛡️" + Style.RESET_ALL)
-    print(Fore.LIGHTWHITE_EX + "👋 4 - Exit This Tool 😔" + Style.RESET_ALL)
+    print(Fore.LIGHTWHITE_EX + "👋 2 - Exit This Tool 😔" + Style.RESET_ALL)
 
     choice = input(Fore.LIGHTCYAN_EX + "Please Enter Your Choice(1, 2, 3 Or 4): " + Style.RESET_ALL).strip()
     
     if choice == "1":
         kibkxhzSCbzF()
     elif choice == "2":
-        aQVPYrXMkLJH()  
-    elif choice == "3":
-        JrdurFStegDP() 
-    elif choice == "4":
         print(Fore.LIGHTGREEN_EX + "🛠️ Thank You For Purchasing And Using The Tool Created By Sxionax ❄️" + Style.RESET_ALL)
         exit()
     else:
