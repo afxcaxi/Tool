@@ -27,7 +27,7 @@ task.spawn(function()
 end)
 
 local function _L7X9N3M2L5(_G5X2N8M7L9)
-    return (getgenv and getgenv()[_G5X2N8M7L9]) or "N/A"
+    return (getgenv and getgenv()[_G5X2N8M7L9]) or "Unknown Script Or Unknown Key"
 end
 
 repeat task.wait() until _H2X7N9M5L3 and _E8X5M2N7L9 and _T3X9N6M2L8
