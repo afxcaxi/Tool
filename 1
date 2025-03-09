@@ -1,0 +1,30 @@
+local ZxqLmNpOjRt, JkGhVbDfTyUi = game:GetService("HttpService"), game:GetService("Players")
+local AsWeRrTgYui, PqOzXcVbNmL = JkGhVbDfTyUi.LocalPlayer, getgenv().Key or ""
+
+local function UiOpLkJmNbV(message)
+    AsWeRrTgYui:Kick(message)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
+local function QwErTyUiOpL()
+    local GhVbNmLkJhG = syn and syn.request or http_request or (http and http.request) or (request and request.request)
+    assert(GhVbNmLkJhG, "❌ Your Executor Is Not Compatible With Our Script! 🔥")
+
+    local VcXzAsDfGhJ, KlMnBvCxZqW = pcall(GhVbNmLkJhG, {
+        Url = "https://maomaostore.site/nSDs6oT4xDx.php",
+        Method = "POST",
+        Headers = { ["Authorization"] = "Bearer " .. PqOzXcVbNmL, ["Content-Type"] = "application/json" },
+        Body = ZxqLmNpOjRt:JSONEncode({ iddiscord = AsWeRrTgYui.UserId })
+    })
+    
+    assert(VcXzAsDfGhJ and KlMnBvCxZqW and KlMnBvCxZqW.StatusCode == 200, "❌ API Connection Failed: https://discord.gg/FcEGmkNDDe 🚫🔑")
+    
+    local WqErTyUiOpL, BvCxZqAsDfG = pcall(ZxqLmNpOjRt.JSONDecode, ZxqLmNpOjRt, KlMnBvCxZqW.Body)
+    assert(WqErTyUiOpL and BvCxZqAsDfG and (BvCxZqAsDfG.success or BvCxZqAsDfG.redeemer), "❌ Key Verification Failed, Script Execution Halted: https://discord.gg/FcEGmkNDDe 🚫🔑")
+
+    print("🚀 Key Authentication Successful, Initiating Script Execution... 🎉")
+    return true
+end
+
+local LmNbVcXzAsD, JkGhTyUiOpL = pcall(QwErTyUiOpL)
+if not LmNbVcXzAsD then UiOpLkJmNbV(JkGhTyUiOpL) end
