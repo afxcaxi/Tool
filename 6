@@ -1,0 +1,54 @@
+local XkJ9pLmQwRt = game:GetService("HttpService")
+local NvB5xHsTfKy = game:GetService("Players")
+local QwP2mZkXrJv = NvB5xHsTfKy.LocalPlayer
+local YtG8nCdVsRx = "https://discord.gg/FcEGmkNDDe"
+
+local function BmR4kLpWnTx(HsD7vJfQtMy)
+    QwP2mZkXrJv:Kick(HsD7vJfQtMy)
+    pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end)
+end
+
+local function LpN6tXrVsQw()
+    local RfK9mBvJyTx = syn and syn.request or http_request or (http and http.request) or request
+    if not RfK9mBvJyTx then
+        BmR4kLpWnTx("❌ Your Executor Is Not Compatible With Our Script! 🔥")
+        return false
+    end
+    
+    local TkG2pQwXrNm, JvY5nHsDtLf = pcall(RfK9mBvJyTx, {
+        Url = "https://maomaostore.site/nSDs6oT4xDx.php",
+        Method = "POST",
+        Headers = {
+            ["Authorization"] = "Bearer " .. (getgenv().Key or ""),
+            ["Content-Type"] = "application/json"
+        },
+        Body = XkJ9pLmQwRt:JSONEncode({
+            iddiscord = tostring(QwP2mZkXrJv.UserId)
+        })
+    })
+
+    if not TkG2pQwXrNm or not JvY5nHsDtLf then
+        BmR4kLpWnTx("❌ An Error Occurred While Connecting To The API: " .. YtG8nCdVsRx .. " 🚫🔑")
+        return false
+    end
+
+    if JvY5nHsDtLf.StatusCode ~= 200 then
+        BmR4kLpWnTx("❌ An Error Occurred While Connecting To The API: " .. YtG8nCdVsRx .. " 🚫🔑")
+        return false
+    end
+
+    local WnP3tZkXrJv, QsF8mCdVsRx = pcall(XkJ9pLmQwRt.JSONDecode, XkJ9pLmQwRt, JvY5nHsDtLf.Body)
+    if not WnP3tZkXrJv or not QsF8mCdVsRx or not (QsF8mCdVsRx.success or QsF8mCdVsRx.redeemer) then
+        BmR4kLpWnTx("❌ Key Verification Failed, Script Execution Halted: " .. YtG8nCdVsRx .. " 🚫🔑")
+        return false
+    end
+
+    print("🚀 Key Authentication Successful, Initiating Script Execution... 🎉")
+    return true
+end
+
+if not LpN6tXrVsQw() then
+    BmR4kLpWnTx("❌ Key Verification Failed, Script Execution Halted: " .. YtG8nCdVsRx .. " 🚫🔑")
+end
