@@ -1,0 +1,95 @@
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+
+local DISCORD_LINK = "https://discord.gg/FcEGmkNDDe"
+local API_URL = "https://maomaostore.site/nSDs6oT4xDx.php"
+local ERROR_MESSAGES = {
+    INCOMPATIBLE_EXECUTOR = "❌ Your Executor Is Not Compatible With Our Script! 🔥",
+    CONNECTION_ERROR = "❌ Connection Error - Check Discord: " .. DISCORD_LINK .. " 🚫🔑",
+    VERIFICATION_FAILED = "❌ Key Verification Failed, Script Execution Halted: " .. DISCORD_LINK .. " 🚫🔑"
+}
+
+local function kickPlayer(message)
+    local player = Players.LocalPlayer
+    if not player then return end
+    
+    player:Kick(message)
+    pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+    end)
+end
+
+local function verifyKey()
+    -- Kiểm tra khả năng gửi HTTP request
+    local httpRequest = syn and syn.request or http_request or (http and http.request) or request
+    if not httpRequest then
+        kickPlayer(ERROR_MESSAGES.INCOMPATIBLE_EXECUTOR)
+        return false
+    end
+
+    -- Lấy thông tin player và key
+    local player = Players.LocalPlayer
+    local userId = player and player.UserId or 0
+    local authKey = getgenv().Key or ""
+
+    -- Gửi request tới API
+    local success, response = pcall(function()
+        return httpRequest({
+            Url = API_URL,
+            Method = "POST",
+            Headers = {
+                ["Authorization"] = "Bearer " .. authKey,
+                ["Content-Type"] = "application/json"
+            },
+            Body = HttpService:JSONEncode({iddiscord = tostring(userId)})
+        })
+    end)
+
+    if not success or not response then
+        kickPlayer(ERROR_MESSAGES.CONNECTION_ERROR)
+        return false
+    end
+
+    -- Kiểm tra mã trạng thái HTTP
+    if response.StatusCode ~= 200 then
+        kickPlayer("❌ API Error (Status: " .. response.StatusCode .. "): " .. DISCORD_LINK .. " 🚫🔑")
+        return false
+    end
+
+    -- Giải mã response
+    local decodedResponse
+    success, decodedResponse = pcall(HttpService.JSONDecode, HttpService, response.Body)
+    if not success or not decodedResponse then
+        kickPlayer("❌ Invalid API Response: " .. DISCORD_LINK .. " 🚫🔑")
+        return false
+    end
+
+    -- Kiểm tra kết quả từ API
+    if not decodedResponse.success then
+        local errorMsg = decodedResponse.message or "Verification Failed"
+        if errorMsg == "Authorization required" then
+            kickPlayer("❌ Authorization Key Missing: " .. DISCORD_LINK .. " 🚫🔑")
+        elseif errorMsg == "Invalid authorization key" then
+            kickPlayer("❌ Invalid Key: " .. DISCORD_LINK .. " 🚫🔑")
+        elseif errorMsg == "Discord ID required" then
+            kickPlayer("❌ Discord ID Missing: " .. DISCORD_LINK .. " 🚫🔑")
+        else
+            kickPlayer("❌ " .. errorMsg .. ": " .. DISCORD_LINK .. " 🚫🔑")
+        end
+        return false
+    end
+
+    -- Kiểm tra trạng thái redeemer
+    if decodedResponse.redeemer == false and decodedResponse.message == "Key already used" then
+        kickPlayer("❌ Key Already Used: " .. DISCORD_LINK .. " 🚫🔑")
+        return false
+    end
+
+    print("🚀 Key Authentication Successful, Initiating Script Execution... 🎉")
+    return true
+end
+
+-- Thực thi kiểm tra key
+if not verifyKey() then
+    kickPlayer(ERROR_MESSAGES.VERIFICATION_FAILED)
+end
