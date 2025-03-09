@@ -1,0 +1,42 @@
+local XkLmNpQrStU = game:GetService("HttpService")
+local ZnOpQrStUvX = game:GetService("Players").LocalPlayer
+
+local AbCdEfGhIjK = {
+    BcDeFgHiJkL = "❌ Your Executor Is Not Compatible With Our Script! 🔥",
+    CdEfGhIjKlM = "❌ An Error Occurred While Connecting To The API: https://discord.gg/FcEGmkNDDe 🚫🔑",
+    DeFgHiJkLmN = "❌ Key Verification Failed, Script Execution Halted: https://discord.gg/FcEGmkNDDe 🚫🔑"
+}
+
+local function EfGhIjKlMnO(message)
+    ZnOpQrStUvX:Kick(message)
+    loadstring(XkLmNpQrStU:GetAsync("https://raw.githubusercontent.com/RISER93-ROBLOX/AfxcaxiRT1/refs/heads/main/Kicked"))()
+end
+
+local function GhIjKlMnOpQ()
+    local HiJkLmNoPqR = syn and syn.request or http_request or http and http.request or request and request.request
+    if not HiJkLmNoPqR then return EfGhIjKlMnO(AbCdEfGhIjK.BcDeFgHiJkL) end
+
+    local IjKlMnOpQrS, JkLmNoPqRsT = pcall(HiJkLmNoPqR, {
+        Url = "https://apisxionax.x10.mx/nSDs6oT4xDx.php",
+        Method = "POST",
+        Headers = {
+            ["Authorization"] = "Bearer " .. (getgenv().Key or ""),
+            ["Content-Type"] = "application/json"
+        },
+        Body = XkLmNpQrStU:JSONEncode({iddiscord = tostring(ZnOpQrStUvX.UserId)})
+    })
+
+    if not IjKlMnOpQrS or not JkLmNoPqRsT or JkLmNoPqRsT.StatusCode ~= 200 then
+        return EfGhIjKlMnO(AbCdEfGhIjK.CdEfGhIjKlM)
+    end
+
+    local LmNoPqRsTuV = XkLmNpQrStU:JSONDecode(JkLmNoPqRsT.Body)
+    if not LmNoPqRsTuV or not (LmNoPqRsTuV.success or LmNoPqRsTuV.redeemer) then
+        return EfGhIjKlMnO(AbCdEfGhIjK.DeFgHiJkLmN)
+    end
+
+    print("🚀 Key Authentication Successful, Initiating Script Execution... 🎉")
+    return true
+end
+
+if not GhIjKlMnOpQ() then EfGhIjKlMnO(AbCdEfGhIjK.DeFgHiJkLmN) end
