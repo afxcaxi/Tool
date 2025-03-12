@@ -1,15 +1,19 @@
 import os
 import subprocess
 import requests
-import time
 from colorama import Fore, Style
 
-API_URL = "https://maomaostore.site/cOKfPjqAYwQF.php"
-KEY_FILE_PATH = "/data/data/SKey11.txt"
+XfGpdUqYhZt = "https://maomaostore.site/cOKfPjqAYwQF.php"
+YsJrLwEvBkC = "/data/data/SKey11.txt"
+QaNtVzOmDiX = "rjKNlduFqpXblNWlQdkCSBUskzIIwaBR"
+PoFhKmXyZaB = "f703e3d6f898de7d"
 
-def print_header():
+def LsCvNdXtOyB():
     os.system('cls' if os.name == 'nt' else 'clear')
-    header = r"""
+
+def UiWrTpYqZvM():
+    LsCvNdXtOyB()
+    GsKyLoVxPmN = r"""
   _________      .__                              _________                                     .__  __          
  /   _____/__  __|__| ____   ____ _____  ___  ___ \_   ___ \  ____   _____   _____  __ __  ____ |__|/  |_ ___.__.
  \_____  \\  \/  /  |/  _ \ /    \\__  \ \  \/  / /    \  \/ /  _ \ /     \ /     \|  |  \/    \|  \   __<   |  |
@@ -17,118 +21,68 @@ def print_header():
 /_______  /__/\_ \__|\____/|___|  (____  /__/\_ \  \______  /\____/|__|_|  /__|_|  /____/|___|  /__||__|  / ____|
         \/      \/              \/     \/      \/         \/             \/      \/           \/          \/          
 """
-    print(Fore.LIGHTCYAN_EX + header + Style.RESET_ALL)
-    print(Fore.LIGHTMAGENTA_EX + "🖥️ Sxionax's Discord Is: https://discord.gg/FcEGmkNDDe 🎮" + Style.RESET_ALL)
-    print(Fore.LIGHTMAGENTA_EX + "🎭 I Love The One With Number 11 In My Class... 💝" + Style.RESET_ALL)
+    print(Fore.LIGHTCYAN_EX + GsKyLoVxPmN + Style.RESET_ALL)
+    print(Fore.LIGHTYELLOW_EX + "Our Discord Is: https://discord.gg/FcEGmkNDDe" + Style.RESET_ALL)
 
-def UIBcJLBJJXkC(user_key):
-    headers = {'Authorization': user_key}
-
+def YoErTlWqZvM(NbXmYpVoJkL):
     try:
-        response = requests.get(API_URL, headers=headers)
-        response_data = response.json()
-
-        if response_data.get("success") == True:  
-            print(Fore.LIGHTGREEN_EX + "💸 Your Key Is Valid And Successfully Verified, You Are Now Free To Use This Tool! 💼" + Style.RESET_ALL)
+        XeYpWqVrNfM = requests.get(XfGpdUqYhZt, headers={'Authorization': NbXmYpVoJkL})
+        if XeYpWqVrNfM.json().get("success"):
             return True
-        else:
-            print(Fore.LIGHTRED_EX + "✨ Invalid Key! 💥" + Style.RESET_ALL)
-            return False
-    except requests.RequestException as e:
-        print(Fore.LIGHTRED_EX + f"🎁 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! 🎖️" + Style.RESET_ALL)
-        return False
+    except requests.RequestException:
+        pass
+    return False
 
-def iuVmWTXqvLhS():
-    while True:
-        if os.path.exists(KEY_FILE_PATH):
-            with open(KEY_FILE_PATH, "r") as f:
-                stored_key = f.read().strip()
-
-            if UIBcJLBJJXkC(stored_key):
-                print(Fore.LIGHTGREEN_EX + "🌙 Correct Key Found, Tool Running... 💭" + Style.RESET_ALL)
-                return
-            else:
-                print(Fore.LIGHTRED_EX + "📣 Stored Key Is Invalid, Please Enter A Valid Key! 🛸" + Style.RESET_ALL)
-
-        user_key = input(Fore.LIGHTCYAN_EX + "🌍 Please Enter Your Key Here 💡: " + Style.RESET_ALL).strip()
-
-        if UIBcJLBJJXkC(user_key):
-            with open(KEY_FILE_PATH, "w") as f:
-                f.write(user_key)
-            print(Fore.LIGHTGREEN_EX + "🗝️ Key Saved Successfully! 💌" + Style.RESET_ALL)
+def KeLpJmNoYvX():
+    if os.path.exists(YsJrLwEvBkC):
+        with open(YsJrLwEvBkC, "r") as f:
+            UhVxYmNpLoK = f.read().strip()
+        if YoErTlWqZvM(UhVxYmNpLoK):
             return
 
-def bNkOFBmvtFOS():
-    command = ["settings", "put", "secure", "android_id", "f703e3d6f898de7d"]
-    
-    try:
-        subprocess.run(command, capture_output=True, text=True, check=True)
-        print(Fore.LIGHTGREEN_EX + "🔗 Same Hwid Process For This Device Completed! 🧪" + Style.RESET_ALL)
-    except subprocess.CalledProcessError:
-        print(Fore.LIGHTRED_EX + "🚫 An Error Occurred While Proceeding Same Hwid For Device, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-    except FileNotFoundError:
-        print(Fore.LIGHTRED_EX + "🚫 Cannot Run This Command, This Device Doesn't Support Our Feature! ❗" + Style.RESET_ALL)
-    except Exception as e:
-        print(Fore.LIGHTRED_EX + f"🚫 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-    
-    input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞")
-    main()
+    while True:
+        NmXpYvLoKqJ = input(Fore.LIGHTCYAN_EX + "🍣 Please Enter Your Key: " + Style.RESET_ALL).strip()
+        if YoErTlWqZvM(NmXpYvLoKqJ):
+            with open(YsJrLwEvBkC, "w") as f:
+                f.write(NmXpYvLoKqJ)
+            return
 
-def XSTeDbcgqHOz():
-    command = ["settings", "put", "secure", "android_id", "f703e3d6f898de7d"]
-    
+def JrNoYmXpKqV():
     try:
-        subprocess.run(command, capture_output=True, text=True, check=True)
-        print(Fore.LIGHTGREEN_EX + "🔗 Same Hwid Process For This Device Completed! 🧪" + Style.RESET_ALL)
-    except subprocess.CalledProcessError:
-        print(Fore.LIGHTRED_EX + "🚫 An Error Occurred While Proceeding Same Hwid For Device, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-    except FileNotFoundError:
-        print(Fore.LIGHTRED_EX + "🚫 Cannot Run This Command, This Device Doesn't Support Our Feature! ❗" + Style.RESET_ALL)
-    except Exception as e:
-        print(Fore.LIGHTRED_EX + f"🚫 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ❗" + Style.RESET_ALL)
-
-    base_path = "/storage/emulated/0/Cryptic"
-    workspace_path = os.path.join(base_path, "Workspace")
-    file_path = os.path.join(workspace_path, "cryptic_key.DEPOSIBLE")
-    
-    try:
-        os.makedirs(workspace_path, exist_ok=True)
-        
-        if os.path.exists(file_path):
-            os.remove(file_path)
-            pass
-        
-        with open(file_path, "w") as f:
-            f.write("rjKNlduFqpXblNWlQdkCSBUskzIIwaBR")
-        
-        print(Fore.LIGHTGREEN_EX + "⏳ Cryptic Key Is Now Permanent! 🗣️" + Style.RESET_ALL)
-    except Exception as e:
-        print(Fore.LIGHTRED_EX + f"🔗 An Unspecified Error Occurred: {e}, Please Report This Bug To Sxionax! ✔️ " + Style.RESET_ALL)
-    
+        subprocess.run(["settings", "put", "secure", "android_id", PoFhKmXyZaB], check=True, capture_output=True)
+    except subprocess.SubprocessError:
+        pass
     input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞" + Style.RESET_ALL)
-    main()
+    ZxCvBnMmQwY()
 
-def main():
-    iuVmWTXqvLhS()  
+def YpXvLoKmJqN():
+    ZbXmLqYvNpK = "/storage/emulated/0/Cryptic/Workspace/cryptic_key.DEPOSIBLE"
+    try:
+        os.makedirs(os.path.dirname(ZbXmLqYvNpK), exist_ok=True)
+        with open(ZbXmLqYvNpK, "w") as f:
+            f.write(QaNtVzOmDiX)
+    except Exception:
+        pass
+    input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞" + Style.RESET_ALL)
+    ZxCvBnMmQwY()
 
-    print_header()
-    print(Fore.LIGHTYELLOW_EX + "♻️ 1 - Auto Same Hwid For Executors 💦" + Style.RESET_ALL)
-    print(Fore.LIGHTWHITE_EX + "🍲 2 - Automatically Create A Permanent Key For Cryptic Executor 🍜" + Style.RESET_ALL)
-    print(Fore.LIGHTWHITE_EX + "👋 3 - Exit This Tool 😔" + Style.RESET_ALL)
+def ZxCvBnMmQwY():
+    KeLpJmNoYvX()
+    UiWrTpYqZvM()
+    print("♻️ 1 - Auto Same HWID 💦")
+    print("🍲 2 - Permanent Cryptic Key 🍜")
+    print("👋 3 - Exit 😔")
 
-    choice = input(Fore.LIGHTCYAN_EX + "Please Enter Your Choice(1, 2 Or 3): " + Style.RESET_ALL).strip()
-    
-    if choice == "1":
-        bNkOFBmvtFOS()
-    elif choice == "2":
-        XSTeDbcgqHOz()
-    elif choice == "3":
-        print(Fore.LIGHTGREEN_EX + "🛠️ Thank You For Purchasing And Using The Tool Created By Sxionax ❄️" + Style.RESET_ALL)
+    WqYrTnXpVmL = input(Fore.LIGHTCYAN_EX + "Enter Your Choice (1, 2 Or 3): " + Style.RESET_ALL).strip()
+    if WqYrTnXpVmL == "1":
+        JrNoYmXpKqV()
+    elif WqYrTnXpVmL == "2":
+        YpXvLoKmJqN()
+    elif WqYrTnXpVmL == "3":
         exit()
     else:
-        print(Fore.LIGHTRED_EX + "📍 Invalid Selection, Please Enter 1, 2 Or 3! 💯" + Style.RESET_ALL)
-        input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞")
-        main()
+        input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞" + Style.RESET_ALL)
+        ZxCvBnMmQwY()
 
 if __name__ == "__main__":
-    main()
+    ZxCvBnMmQwY()
