@@ -4,7 +4,7 @@ import requests
 import time
 from colorama import Fore, Style
 
-API_URL = "https://apisxionax.x10.mx/cOKfPjqAYwQF.php"
+API_URL = "https://maomaostore.site/cOKfPjqAYwQF.php"
 KEY_FILE_PATH = "/data/data/SKey11.txt"
 
 def print_header():
@@ -126,7 +126,7 @@ def main():
         print(Fore.LIGHTGREEN_EX + "🛠️ Thank You For Purchasing And Using The Tool Created By Sxionax ❄️" + Style.RESET_ALL)
         exit()
     else:
-        print(Fore.LIGHTRED_EX + "📍 Invalid Selection, Please Enter 1, 2, 3 Or 4! 💯" + Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX + "📍 Invalid Selection, Please Enter 1, 2 Or 3! 💯" + Style.RESET_ALL)
         input(Fore.LIGHTCYAN_EX + "🔥 Press Enter To Go Back... 📞")
         main()
 
