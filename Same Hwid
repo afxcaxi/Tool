@@ -70,7 +70,7 @@ def ZxCvBnMmQwY():
     KeLpJmNoYvX()
     UiWrTpYqZvM()
     print("♻️ 1 - Auto Same HWID 💦")
-    print("🍲 2 - Permanent Cryptic Key 🍜")
+    print("🍲 2 - Permanent Cryptic's Key 🍜")
     print("👋 3 - Exit 😔")
 
     WqYrTnXpVmL = input(Fore.LIGHTCYAN_EX + "Enter Your Choice (1, 2 Or 3): " + Style.RESET_ALL).strip()
