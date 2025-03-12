@@ -116,7 +116,7 @@ def main():
     print(Fore.LIGHTWHITE_EX + "🍲 2 - Automatically Create A Permanent Key For Cryptic Executor 🍜" + Style.RESET_ALL)
     print(Fore.LIGHTWHITE_EX + "👋 3 - Exit This Tool 😔" + Style.RESET_ALL)
 
-    choice = input(Fore.LIGHTCYAN_EX + "Please Enter Your Choice(1, 2, 3 Or 4): " + Style.RESET_ALL).strip()
+    choice = input(Fore.LIGHTCYAN_EX + "Please Enter Your Choice(1, 2 Or 3): " + Style.RESET_ALL).strip()
     
     if choice == "1":
         bNkOFBmvtFOS()
