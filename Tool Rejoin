@@ -69,7 +69,7 @@ def KeLpJmNoYvX():
 executors = {
     "Codex": "/storage/emulated/0/Codex/",
     "Arceus X": "/storage/emulated/0/Arceus X/",
-    "Delta": "/storage/emulated/0/Delta/",
+    "Trigon": "/storage/emulated/0/Trigon/",
     "Cryptic": "/storage/emulated/0/Cryptic/",
     "VegaX": "/storage/emulated/0/VegaX/",
     "Evon": "/storage/emulated/0/Evon/"
