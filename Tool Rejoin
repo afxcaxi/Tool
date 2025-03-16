@@ -1,5 +1,4 @@
 import os
-import requests
 import json
 import time
 import subprocess
@@ -484,33 +483,47 @@ def kill_roblox_process(package_name):
     os.system(f"pkill -f {package_name}")
     time.sleep(2)  # Đặt thời gian này chỉ khi cần thiết
 
+def update_package_status(package_name, status, package_statuses):
+    """Cập nhật trạng thái cho package và gọi update_status_table một lần duy nhất."""
+    package_statuses[package_name]["Status"] = status
+
+def run_subprocess(command):
+    """Chạy subprocess mà không cần ghi lại đầu ra."""
+    subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def launch_roblox(package_name, server_link, num_packages, package_statuses):
     try:
-        # Update the status to indicate Roblox is opening
-        package_statuses[package_name]["Status"] = Fore.LIGHTCYAN_EX + f"Opening Roblox for {package_name}..." + Style.RESET_ALL
-        update_status_table(package_statuses)
-
-        # Open Roblox (Initial Splash)
-        subprocess.run(['am', 'start', '-n', f'{package_name}/com.roblox.client.startup.ActivitySplash', '-d', server_link], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        time.sleep(15 if num_packages >= 6 else 8)  # Adjust wait time based on the number of packages
-
-        # Proceed to launch
-        package_statuses[package_name]["Status"] = Fore.LIGHTCYAN_EX + f"Joining Roblox for {package_name}..." + Style.RESET_ALL
-        update_status_table(package_statuses)
-        subprocess.run(['am', 'start', '-n', f'{package_name}/com.roblox.client.ActivityProtocolLaunch', '-d', server_link], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        # Tính toán thời gian chờ trước
+        wait_time = 15 if num_packages >= 6 else 8
         
-        # Wait a moment to ensure Roblox has launched
+        # Cập nhật trạng thái mở Roblox
+        update_package_status(package_name, Fore.LIGHTCYAN_EX + f"Opening Roblox for {package_name}..." + Style.RESET_ALL, package_statuses)
+
+        # Khởi động Roblox (Splash Screen)
+        run_subprocess(['am', 'start', '-n', f'{package_name}/com.roblox.client.startup.ActivitySplash', '-d', server_link])
+        time.sleep(wait_time)  # Thời gian chờ tùy thuộc vào số lượng packages
+
+        # Cập nhật trạng thái tham gia Roblox
+        update_package_status(package_name, Fore.LIGHTCYAN_EX + f"Joining Roblox for {package_name}..." + Style.RESET_ALL, package_statuses)
+
+        # Tiến hành khởi động Roblox (Launch)
+        run_subprocess(['am', 'start', '-n', f'{package_name}/com.roblox.client.ActivityProtocolLaunch', '-d', server_link])
+        
+        # Chờ Roblox khởi động xong
         time.sleep(20)
-        
-        # Update the status after successful join
-        package_statuses[package_name]["Status"] = Fore.GREEN + "Joined Roblox" + Style.RESET_ALL
+
+        # Cập nhật trạng thái sau khi tham gia thành công
+        update_package_status(package_name, Fore.GREEN + "Joined Roblox" + Style.RESET_ALL, package_statuses)
+
+        # Gọi update_status_table một lần duy nhất sau khi cập nhật tất cả trạng thái
         update_status_table(package_statuses)
 
     except Exception as e:
-        # Catch all exceptions and log them specifically to avoid "launching failed" messages
-        package_statuses[package_name]["Status"] = Fore.RED + f"Error launching Roblox for {package_name}: {e}" + Style.RESET_ALL
-        update_status_table(package_statuses)
+        # Xử lý ngoại lệ và cập nhật trạng thái lỗi
+        error_message = f"Error launching Roblox for {package_name}: {e}"
+        update_package_status(package_name, Fore.RED + error_message + Style.RESET_ALL, package_statuses)
         print(f"Error details: {e}")
+        update_status_table(package_statuses)
 
 def check_executor_and_rejoin(package_name, username, package_statuses, server_link, num_packages, accounts):
     try:
