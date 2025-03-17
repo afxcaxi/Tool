@@ -1,9 +1,9 @@
+import requests
 import os
 import json
 import time
 import subprocess
 import re
-import requests
 import string
 import random
 import GPUtil
@@ -174,7 +174,6 @@ def reset_executor_file(username):
                     os.remove(file_path)
             except OSError:
                 pass  # Nếu lỗi, bỏ qua
-
 
 def clear_executor_status(username):
     """ Xóa trạng thái executor """
@@ -485,46 +484,55 @@ def kill_roblox_process(package_name):
     time.sleep(2)  # Đặt thời gian này chỉ khi cần thiết
 
 def update_package_status(package_name, status, package_statuses):
-    """Cập nhật trạng thái cho package và gọi update_status_table một lần duy nhất."""
+    """Cập nhật trạng thái cho package."""
     package_statuses[package_name]["Status"] = status
 
 def run_subprocess(command):
     """Chạy subprocess mà không cần ghi lại đầu ra."""
-    subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error running command: {e}")
+        raise
 
 def launch_roblox(package_name, server_link, num_packages, package_statuses):
+    """Khởi động Roblox và cập nhật trạng thái cho package."""
     try:
         # Tính toán thời gian chờ trước
         wait_time = 15 if num_packages >= 6 else 8
-        
+
+        # Xác định các trạng thái màu sắc cần dùng
+        opening_status = Fore.LIGHTCYAN_EX + f"Opening Roblox for {package_name}..." + Style.RESET_ALL
+        joining_status = Fore.LIGHTCYAN_EX + f"Joining Roblox for {package_name}..." + Style.RESET_ALL
+        joined_status = Fore.GREEN + "Joined Roblox" + Style.RESET_ALL
+        error_status = Fore.RED + f"Error launching Roblox for {package_name}" + Style.RESET_ALL
+
         # Cập nhật trạng thái mở Roblox
-        update_package_status(package_name, Fore.LIGHTCYAN_EX + f"Opening Roblox for {package_name}..." + Style.RESET_ALL, package_statuses)
+        update_package_status(package_name, opening_status, package_statuses)
 
         # Khởi động Roblox (Splash Screen)
         run_subprocess(['am', 'start', '-n', f'{package_name}/com.roblox.client.startup.ActivitySplash', '-d', server_link])
         time.sleep(wait_time)  # Thời gian chờ tùy thuộc vào số lượng packages
 
         # Cập nhật trạng thái tham gia Roblox
-        update_package_status(package_name, Fore.LIGHTCYAN_EX + f"Joining Roblox for {package_name}..." + Style.RESET_ALL, package_statuses)
+        update_package_status(package_name, joining_status, package_statuses)
 
         # Tiến hành khởi động Roblox (Launch)
         run_subprocess(['am', 'start', '-n', f'{package_name}/com.roblox.client.ActivityProtocolLaunch', '-d', server_link])
-        
+
         # Chờ Roblox khởi động xong
-        time.sleep(20)
+        time.sleep(15)
 
         # Cập nhật trạng thái sau khi tham gia thành công
-        update_package_status(package_name, Fore.GREEN + "Joined Roblox" + Style.RESET_ALL, package_statuses)
-
-        # Gọi update_status_table một lần duy nhất sau khi cập nhật tất cả trạng thái
-        update_status_table(package_statuses)
+        update_package_status(package_name, joined_status, package_statuses)
 
     except Exception as e:
         # Xử lý ngoại lệ và cập nhật trạng thái lỗi
-        error_message = f"Error launching Roblox for {package_name}: {e}"
-        update_package_status(package_name, Fore.RED + error_message + Style.RESET_ALL, package_statuses)
-        print(f"Error details: {e}")
-        update_status_table(package_statuses)
+        update_package_status(package_name, error_status + ": " + str(e), package_statuses)
+        print(f"Error details for {package_name}: {e}")
+
+    # Gọi update_status_table một lần duy nhất sau khi cập nhật tất cả trạng thái
+    update_status_table(package_statuses)
 
 def check_executor_and_rejoin(package_name, username, package_statuses, server_link, num_packages, accounts):
     try:
@@ -810,87 +818,38 @@ def check_user_online(user_id):
     max_retries = 3
     delay = 2
 
-    session = requests.Session()
-    primary_url = "https://presence.roblox.com/v1/presence/users"
-    headers = {'Content-Type': 'application/json'}
-    body = json.dumps({"userIds": [user_id]})
+    # Tạo session duy nhất cho toàn bộ vòng lặp
+    with requests.Session() as session:
+        primary_url = "https://presence.roblox.com/v1/presence/users"
+        headers = {'Content-Type': 'application/json'}
+        body = json.dumps({"userIds": [user_id]})
 
-    for attempt in range(max_retries):
-        try:
-            primary_response = session.post(primary_url, headers=headers, data=body, timeout=7)
-            primary_response.raise_for_status()  # Kiểm tra mã trạng thái HTTP
-            primary_data = primary_response.json()
+        for attempt in range(max_retries):
+            try:
+                # Gửi request POST
+                primary_response = session.post(primary_url, headers=headers, data=body, timeout=7)
+                primary_response.raise_for_status()  # Kiểm tra lỗi HTTP
 
-            user_presence = primary_data["userPresences"][0]
-            primary_presence_type = user_presence["userPresenceType"]
-            primary_last_location = user_presence.get("lastLocation", None)
+                primary_data = primary_response.json()  # Chuyển đổi response thành JSON
+                user_presence = primary_data["userPresences"][0]
+                primary_presence_type = user_presence["userPresenceType"]
+                primary_last_location = user_presence.get("lastLocation", None)
 
-            if primary_last_location == "Website":
-                print(Fore.YELLOW + f"{user_id} is currently on the Website. Rejoin recommended." + Style.RESET_ALL)
-                primary_presence_type = 0  # Set presence type to offline to trigger a rejoin
+                # Nếu user đang ở website, đưa ra thông báo và cập nhật trạng thái offline
+                if primary_last_location == "Website":
+                    print(Fore.YELLOW + f"{user_id} is currently on the Website. Rejoin recommended." + Style.RESET_ALL)
+                    primary_presence_type = 0  # Đánh dấu offline để yêu cầu người dùng tham gia lại
 
-            return primary_presence_type, primary_last_location
+                return primary_presence_type, primary_last_location
 
-        except requests.exceptions.RequestException as e:
-            print(Fore.RED + f"Error checking online status for user {user_id} (Attempt {attempt + 1}): {e}" + Style.RESET_ALL)
-            if attempt < max_retries - 1:
-                time.sleep(delay)
-                delay *= 2  
-            else:
-                return None, None
-
-def get_hwid_file_path(package_name):
-    directory = f"/data/data/{package_name}/app_assets/content/"
-    try:
-        files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
-
-        if not files:
-            print(Fore.RED + "No files found in the specified directory." + Style.RESET_ALL)
-            return None
-
-        last_file = files[-1]
-        hwid_file_path = os.path.join(directory, last_file)
-        return hwid_file_path
-            
-    except Exception as e:
-        print(Fore.RED + f"Error retrieving HWID file path: {e}" + Style.RESET_ALL)
-        return None
-
-def get_hwid(package_name):
-    hwid_file_path = get_hwid_file_path(package_name)
-    
-    if hwid_file_path is None:
-        return None, None  
-
-    try:
-        with open(hwid_file_path, "r") as file:
-            hwid = file.read().strip()
-            print(Fore.GREEN + f"Hwid Found In Your Device, That Is: {hwid}" + Style.RESET_ALL)
-            return hwid, hwid_file_path  
-            
-    except Exception as e:
-        print(Fore.RED + f"An Error Occurred While Retrieving Your Hwid!" + Style.RESET_ALL)
-        return None, None  
-
-def edit_hwid_file(hwid_file_path):
-    try:
-        with open(hwid_file_path, 'r') as file:
-            content = file.read().strip()
-        
-        print(Fore.YELLOW + f"Current HWID Content: {content}" + Style.RESET_ALL)
-        
-        new_content = input(Fore.CYAN + "Please Enter The Hwid You Want To Adjust To Same Hwid In Fluxus Executr On Your Device(Press Enter To Keep The Old Hwid): " + Style.RESET_ALL)
-        
-        if new_content.strip(): 
-            with open(hwid_file_path, 'w') as file:
-                file.write(new_content.strip())
-            print(Fore.GREEN + f"Hwid Has Been Successfully Edited As You Want And Now It Is Same Hwid: {new_content}" + Style.RESET_ALL)
-        else:
-            print(Fore.RED + "Hwid Unedited In Fluxus Executor" + Style.RESET_ALL)
-            
-    except Exception as e:
-        print(Fore.RED + f"An Error Occurred While Editing Hwid For Fluxus On Your Device!" + Style.RESET_ALL)
-        return None
+            except requests.exceptions.RequestException as e:
+                # In thông báo lỗi khi có ngoại lệ
+                print(Fore.RED + f"Error checking online status for user {user_id} (Attempt {attempt + 1}): {e}" + Style.RESET_ALL)
+                if attempt < max_retries - 1:
+                    time.sleep(delay)
+                    delay *= 2  # Tăng thời gian chờ (exponential backoff)
+                else:
+                    return None, None
 
 def create_check_file():
     try:
