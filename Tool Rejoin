@@ -23,6 +23,32 @@ ACCOUNTS_FILE = "FS-Kryus_Accounts.txt"
 status_lock = threading.Lock()
 rejoin_lock = threading.Lock()
 
+XfGpdUqYhZt = "https://maomaostore.site/cOKfPjqAYwQF.php"
+YsJrLwEvBkC = "/data/data/SKey11.txt"
+
+def YoErTlWqZvM(NbXmYpVoJkL):
+    try:
+        XeYpWqVrNfM = requests.get(XfGpdUqYhZt, headers={'Authorization': NbXmYpVoJkL})
+        if XeYpWqVrNfM.json().get("success"):
+            return True
+    except requests.RequestException:
+        pass
+    return False
+
+def KeLpJmNoYvX():
+    if os.path.exists(YsJrLwEvBkC):
+        with open(YsJrLwEvBkC, "r") as f:
+            UhVxYmNpLoK = f.read().strip()
+        if YoErTlWqZvM(UhVxYmNpLoK):
+            return
+
+    while True:
+        NmXpYvLoKqJ = input(Fore.LIGHTCYAN_EX + "🍣 Please Enter Your Key: " + Style.RESET_ALL).strip()
+        if YoErTlWqZvM(NmXpYvLoKqJ):
+            with open(YsJrLwEvBkC, "w") as f:
+                f.write(NmXpYvLoKqJ)
+            return
+
 package_statuses = {}
 username_cache = {}
 CACHE_FILE = "FS-Kryuss_Username-Cache.json"
@@ -803,6 +829,8 @@ def BqIjwGnTqBtd():
     main()
 
 def main():
+    KeLpJmNoYvX()
+
     load_cache()
 
     cpu, ram, gpu = check_system_cpu_ram_gpu()
