@@ -267,21 +267,16 @@ def kill_roblox_processes():
     package_names = get_roblox_packages()
     for package_name in package_names:
         print(f"Trying to kill process for package: {package_name}")
-        result = subprocess.run(["pkill", "-f", package_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        if result.returncode == 0:
-            print(f"Successfully killed process for {package_name}")
-        else:
-            print(f"Failed to kill process for {package_name}: {result.stderr.decode()}")
-    time.sleep(1) 
+        # Use pkill to kill processes by package name
+        os.system(f"pkill -f {package_name}")
+    time.sleep(2) 
 
+# Function to kill a specific Roblox process
 def kill_roblox_process(package_name):
     print(f"Killing Roblox process for {package_name}...")
-    result = subprocess.run(["pkill", "-f", package_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    if result.returncode == 0:
-        print(f"Successfully killed process for {package_name}")
-    else:
-        print(f"Failed to kill process for {package_name}: {result.stderr.decode()}")
-    time.sleep(1) 
+    # Use pkill to kill process by package name
+    os.system(f"pkill -f {package_name}")
+    time.sleep(2) 
 
 def launch_roblox(package_name, server_link, num_packages, package_statuses):
     try:
@@ -941,7 +936,7 @@ def main():
                                                 package_statuses[package_name]["Status"] = Fore.YELLOW + "Not In-Game, Recently Active" + Style.RESET_ALL
 
                                     update_status_table(package_statuses)
-                                    time.sleep(25)
+                                    time.sleep(24)  # Giảm thời gian sleep xuống 24 giây
 
                                 except Exception as e:
                                     print(Fore.RED + f"Error during rejoin process for {package_name}: {e}" + Style.RESET_ALL)
@@ -1110,7 +1105,7 @@ def main():
                                                 package_statuses[package_name]["Status"] = Fore.YELLOW + "Not In-Game, Recently Active" + Style.RESET_ALL
 
                                     update_status_table(package_statuses)
-                                    time.sleep(25)  # Adjust the delay time as needed
+                                    time.sleep(24)  # Giảm thời gian sleep xuống 24 giây
 
                                 except Exception as e:
                                     print(Fore.RED + f"Error during rejoin process for {package_name}: {e}" + Style.RESET_ALL)
