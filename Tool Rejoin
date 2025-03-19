@@ -444,12 +444,14 @@ def find_userid_from_file(file_path):
     try:
         with open(file_path, 'r') as file:
             content = file.read()
-            userid_start = content.find('"User Id":"')
+            # Debugging information removed to keep console clean
+
+            userid_start = content.find('"UserId":"')
             if userid_start == -1:
                 print("Userid not found")
                 return None
 
-            userid_start += len('"User Id":"')
+            userid_start += len('"UserId":"')
             userid_end = content.find('"', userid_start)
             if userid_end == -1:
                 print("Userid end quote not found")
@@ -557,6 +559,7 @@ def load_cache():
         with open(CACHE_FILE, "r") as f:
             username_cache = json.load(f)
 
+# Save the cache to file
 def save_cache():
     try:
         temp_file = CACHE_FILE + ".tmp"
